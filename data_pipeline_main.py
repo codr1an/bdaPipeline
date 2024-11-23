@@ -1,5 +1,5 @@
 import gradio as gr
-from data_visualization import visualize_top_10, visualize_trends
+from data_visualization import visualize_top_10, visualize_trends, visualize_all_trends
 from data_processing import process_data
 
 
@@ -9,7 +9,13 @@ def main():
         return table, plot
 
     def display_trend(crypto_id, period):
-        trend_table, trend_plot = visualize_trends(crypto_id, period)
+        trend_table, trend_plot = None, None
+
+        if crypto_id == "All":
+            trend_table, trend_plot = visualize_all_trends(period)
+        else:
+            trend_table, trend_plot = visualize_trends(crypto_id, period)
+
         return trend_table, trend_plot
 
     with gr.Blocks() as demo:
@@ -23,9 +29,10 @@ def main():
             top_10_data = process_data()
             crypto_id = gr.Dropdown(
                 label="Cryptocurrency ID",
-                choices=top_10_data["id"].tolist(),
-                value=top_10_data["id"].iloc[0],
+                choices=["All"] + top_10_data["id"].tolist(),
+                value="All",
             )
+
             period = gr.Radio(
                 label="Period", choices=["30 Days", "12 Months"], value="30 Days"
             )
