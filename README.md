@@ -1,4 +1,4 @@
-# Big Data Analysis: Cryptocurrency Pipeline
+# Big Data Analytics: Cryptocurrency Pipeline
 
 ## Goal
 
@@ -41,7 +41,7 @@ py data_pipeline_main.py
 
 ## Approach
 
-**Theme**: Crypto currency analysis
+**Theme**: Crypto currency analytics
 
 **Data Source** : https://docs.coincap.io/
 
