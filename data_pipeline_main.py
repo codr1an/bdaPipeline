@@ -46,6 +46,7 @@ def main():
             )
 
         demo.load(display_table_and_plot, outputs=[table, plot])
+        demo.launch(share=False, inbrowser=True)
 
     demo.launch()
 
